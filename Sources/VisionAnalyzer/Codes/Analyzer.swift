@@ -12,7 +12,7 @@ import UIKit
 import SwiftUI
 
 //https://dev.classmethod.jp/articles/vision-body-pose/
-class Analyzer{
+public class Analyzer{
     
     private var width:CGFloat
     private var height:CGFloat

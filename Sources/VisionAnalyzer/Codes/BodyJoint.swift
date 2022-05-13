@@ -9,7 +9,7 @@ import Foundation
 import Vision
 import UIKit
 
-struct BodyJoint {
+public struct BodyJoint {
     
     var name:VNHumanBodyPoseObservation.JointName
     var value:CGPoint

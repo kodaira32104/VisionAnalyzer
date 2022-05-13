@@ -9,7 +9,7 @@ import Foundation
 import Vision
 import UIKit
 
-class BodyDrawer{
+public class BodyDrawer{
     
     //付け根部分のポイントの色
     let pointColor:CGColor = UIColor.green.cgColor
