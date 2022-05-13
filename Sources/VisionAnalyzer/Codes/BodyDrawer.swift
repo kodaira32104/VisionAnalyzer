@@ -49,7 +49,7 @@ public class BodyDrawer{
     ///   - joints: 骨格情報
     /// - Returns:
     ///   - UIImage?: 描写後のイメージ
-    func drawBody(image: UIImage,joints:[BodyJoint],position:PositionType) -> UIImage? {
+    func drawBody(image: UIImage,joints:[BodyJoint]) -> UIImage? {
         
         //Create a context of the starting image size and set it as the current one
         UIGraphicsBeginImageContext(image.size)
@@ -103,18 +103,18 @@ public class BodyDrawer{
         }
         
         // Draw Angle
-        let angle = calcAngle(joints, position: position)
-        let text = String(round(angle*10)/10)//四捨五入
-        let font = UIFont.boldSystemFont(ofSize: 32)
-        let textRect  = CGRect(x: 60, y: 30, width: 100, height: 62)
-        
-        let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-        let textFontAttributes = [
-            NSAttributedString.Key.font: font,
-            NSAttributedString.Key.foregroundColor: UIColor.yellow,
-            NSAttributedString.Key.paragraphStyle: textStyle
-        ]
-        text.draw(in: textRect, withAttributes: textFontAttributes)
+//        let angle = calcAngle(joints, position: position)
+//        let text = String(round(angle*10)/10)//四捨五入
+//        let font = UIFont.boldSystemFont(ofSize: 32)
+//        let textRect  = CGRect(x: 60, y: 30, width: 100, height: 62)
+//
+//        let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+//        let textFontAttributes = [
+//            NSAttributedString.Key.font: font,
+//            NSAttributedString.Key.foregroundColor: UIColor.yellow,
+//            NSAttributedString.Key.paragraphStyle: textStyle
+//        ]
+//        text.draw(in: textRect, withAttributes: textFontAttributes)
         
         // Save the context as a new UIImage
         let drawImage = UIGraphicsGetImageFromCurrentImageContext()
