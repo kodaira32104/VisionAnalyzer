@@ -12,7 +12,7 @@ public struct VisionAnalyzer {
     
     }
     
-    public analyze(cgImage:CGImage) ->CGImage?{
+    public func analyze(cgImage:CGImage) ->CGImage?{
         
         analyzer.performRequests(cgImage: cgImage)
         let points:[BodyJoint] = analyzer.points
@@ -27,7 +27,7 @@ public struct VisionAnalyzer {
     }
     
    
-    public hoge(text:String)->String{
+    public func hoge(text:String)->String{
         return "piyo"
     }
 
