@@ -5,26 +5,26 @@ import SwiftUI
 
 public struct VisionAnalyzer {
     
-    var analyzer:Analyzer = Analyzer()
+    //var analyzer:Analyzer = Analyzer()
 
     public init(){
         
     
     }
     
-    public func analyze(cgImage:CGImage) ->CGImage?{
-        
-        analyzer.performRequests(cgImage: cgImage)
-        let points:[BodyJoint] = analyzer.points
-        
-        //画面を書き変えるためにmainQueueで処理する
-        DispatchQueue.main.sync {
-            guard let img = drawer.drawBody(image: UIImage(cgImage: cgImage), joints: points) else{
-                return nil
-            }
-            return img
-        }
-    }
+//    public func analyze(cgImage:CGImage) ->CGImage?{
+//
+//        analyzer.performRequests(cgImage: cgImage)
+//        let points:[BodyJoint] = analyzer.points
+//
+//        //画面を書き変えるためにmainQueueで処理する
+//        DispatchQueue.main.sync {
+//            guard let img = drawer.drawBody(image: UIImage(cgImage: cgImage), joints: points) else{
+//                return nil
+//            }
+//            return img
+//        }
+//    }
     
    
     public func hoge(text:String)->String{
