@@ -1,36 +1,40 @@
 import Foundation
 import Vision
-import UIKit
 import SwiftUI
 
+
+//https://dev.classmethod.jp/articles/vision-body-pose/
 public struct VisionAnalyzer {
     
     //var analyzer:Analyzer = Analyzer()
+    
+    public var jointNames: [VNHumanBodyPoseObservation.JointName] = [
+        .neck,
+        .rightShoulder,
+        .rightHip,
+        .rightElbow,
+        .rightWrist,
+        .rightKnee,
+        .rightAnkle,
+        .root,
+        .leftHip,
+        .leftShoulder,
+        .leftElbow,
+        .leftWrist,
+        .leftKnee,
+        .leftAnkle,
+        .nose,
+        .rightEye,
+        .rightEar,
+        .leftEye,
+        .leftEar
+    ]
 
     public init(){
         
-    
     }
-    
-//    public func analyze(cgImage:CGImage) ->CGImage?{
-//
-//        analyzer.performRequests(cgImage: cgImage)
-//        let points:[BodyJoint] = analyzer.points
-//
-//        //画面を書き変えるためにmainQueueで処理する
-//        DispatchQueue.main.sync {
-//            guard let img = drawer.drawBody(image: UIImage(cgImage: cgImage), joints: points) else{
-//                return nil
-//            }
-//            return img
-//        }
-//    }
     
    
-    public func hoge(text:String)->String{
-        return "piyo"
-    }
 
-    
     
 }
