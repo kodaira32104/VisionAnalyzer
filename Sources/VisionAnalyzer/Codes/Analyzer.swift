@@ -23,7 +23,7 @@ public class Analyzer{
     ///胴体のジョイント名
     public var jointNames: [VNHumanBodyPoseObservation.JointName]
 
-    init(jointNames: [VNHumanBodyPoseObservation.JointName] = [
+    public init(jointNames: [VNHumanBodyPoseObservation.JointName] = [
         .neck,
         .rightShoulder,
         .rightHip,
@@ -51,7 +51,7 @@ public class Analyzer{
     /// 骨格を検出する
     /// - Parameters:
     ///   - cgImage: 分析対象の画像
-    func performRequests(cgImage:CGImage){
+    public func performRequests(cgImage:CGImage){
 
         //反復する際にログが残るので関数呼び出し時に消す
         self.points = []
