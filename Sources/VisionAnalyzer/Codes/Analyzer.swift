@@ -23,7 +23,27 @@ public class Analyzer{
     ///胴体のジョイント名
     public var jointNames: [VNHumanBodyPoseObservation.JointName]
 
-    init(jointNames: [VNHumanBodyPoseObservation.JointName]) {
+    init(jointNames: [VNHumanBodyPoseObservation.JointName] = [
+        .neck,
+        .rightShoulder,
+        .rightHip,
+        .rightElbow,
+        .rightWrist,
+        .rightKnee,
+        .rightAnkle,
+        .root,
+        .leftHip,
+        .leftShoulder,
+        .leftElbow,
+        .leftWrist,
+        .leftKnee,
+        .leftAnkle,
+        .nose,
+        .rightEye,
+        .rightEar,
+        .leftEye,
+        .leftEar
+    ]) {
         self.jointNames = jointNames
     }
 
@@ -105,32 +125,32 @@ public class Analyzer{
     /// ※ Reference
     /// 座標系、参考サイト
     /// https://nasubiblog.hatenablog.com/#%E5%BA%A7%E6%A8%99%E7%B3%BB
-//    private func flipUpsideDown(point: CGPoint, to size: CGSize) -> CGPoint {
-//        return CGPoint(x: point.x * size.width,
-//                       y: (1.0 - point.y) * size.height)
+    static func flipUpsideDown(point: CGPoint, to size: CGSize) -> CGPoint {
+        return CGPoint(x: point.x * size.width,
+                       y: (1.0 - point.y) * size.height)
+    }
+
+
+    /// 座標系を反転する
+    /// - Parameters:
+    ///   - point: 現時点の座標
+    ///   - size: 画像のサイズ
+//    static func convertPoint(point: CGPoint, to size: CGSize) -> CGPoint {
+//        let uikitPoint = pointConvert_VtoU(point,to: size)
+//        // 座標系変換のため、 Y 軸方向に反転する
+//        return CGPoint(x: uikitPoint.x * size.width,y: (1.0 - uikitPoint.y) * size.height)
 //    }
 
-
     /// 座標系を反転する
     /// - Parameters:
     ///   - point: 現時点の座標
     ///   - size: 画像のサイズ
-    private func convertPoint(point: CGPoint, to size: CGSize) -> CGPoint {
-        let uikitPoint = pointConvert_VtoU(point,to: size)
-        // 座標系変換のため、 Y 軸方向に反転する
-        return CGPoint(x: uikitPoint.x * size.width,y: (1.0 - uikitPoint.y) * size.height)
-    }
-
-    /// 座標系を反転する
-    /// - Parameters:
-    ///   - point: 現時点の座標
-    ///   - size: 画像のサイズ
-    private func pointConvert_VtoU(_ point: CGPoint, to size: CGSize) -> CGPoint {
-        //本来なら、Visionの座標は[0,0]→[1,1]の間で取得できるが、
-        //今回、UIKit座標の上限逆さで取得する
-        //よって、一度[0,0]→[1,1]の範囲内に戻す
-        return CGPoint(x: point.x/size.width , y: point.y/size.height)
-    }
+//    static func pointConvert_VtoU(_ point: CGPoint, to size: CGSize) -> CGPoint {
+//        //本来なら、Visionの座標は[0,0]→[1,1]の間で取得できるが、
+//        //今回、UIKit座標の上限逆さで取得する
+//        //よって、一度[0,0]→[1,1]の範囲内に戻す
+//        return CGPoint(x: point.x/size.width , y: point.y/size.height)
+//    }
 
 
     /// ２点間の距離：直交座標A(x,y)とB(x,y)の間の距離を求める関数
