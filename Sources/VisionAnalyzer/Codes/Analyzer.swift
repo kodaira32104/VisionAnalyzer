@@ -1,8 +1,8 @@
 //
-//  File.swift
-//  
+//  Analyzer.swift
+//  VisionAnalyzerDemo
 //
-//  Created by M K on 2022/05/21.
+//  Created by M K on 2022/05/13.
 //
 
 import Foundation
@@ -110,7 +110,7 @@ public class Analyzer{
             /// let normalizedPoint = VNImagePointForNormalizedPoint(point.location,Int(width),Int(height))
 
             // Vision の座標は[0~1]の範囲で表され、原点が左下（上下逆さ）なので、座標を再計算する
-            let fixdPoint = self.flipUpsideDown(point: point.location,
+            let fixdPoint = Analyzer.flipUpsideDown(point: point.location,
                                         to: CGSize(width: width,height: height))
 
             return BodyJoint(name: name,value: fixdPoint)
@@ -118,7 +118,7 @@ public class Analyzer{
     }
 
 
-    /// 座標系を反転する（精度高）
+    /// 座標系を反転する
     /// - Parameters:
     ///   - point: 現時点の座標
     ///   - size: 画像のサイズ
@@ -129,28 +129,6 @@ public class Analyzer{
         return CGPoint(x: point.x * size.width,
                        y: (1.0 - point.y) * size.height)
     }
-
-
-    /// 座標系を反転する
-    /// - Parameters:
-    ///   - point: 現時点の座標
-    ///   - size: 画像のサイズ
-//    static func convertPoint(point: CGPoint, to size: CGSize) -> CGPoint {
-//        let uikitPoint = pointConvert_VtoU(point,to: size)
-//        // 座標系変換のため、 Y 軸方向に反転する
-//        return CGPoint(x: uikitPoint.x * size.width,y: (1.0 - uikitPoint.y) * size.height)
-//    }
-
-    /// 座標系を反転する
-    /// - Parameters:
-    ///   - point: 現時点の座標
-    ///   - size: 画像のサイズ
-//    static func pointConvert_VtoU(_ point: CGPoint, to size: CGSize) -> CGPoint {
-//        //本来なら、Visionの座標は[0,0]→[1,1]の間で取得できるが、
-//        //今回、UIKit座標の上限逆さで取得する
-//        //よって、一度[0,0]→[1,1]の範囲内に戻す
-//        return CGPoint(x: point.x/size.width , y: point.y/size.height)
-//    }
 
 
     /// ２点間の距離：直交座標A(x,y)とB(x,y)の間の距離を求める関数
