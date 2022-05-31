@@ -1,11 +1,3 @@
-//
-//  BodyDrawer.swift
-//  VisionAnalyzerDemo
-//
-//  Created by M K on 2022/05/13.
-//
-
-
 import Foundation
 import Vision
 import UIKit

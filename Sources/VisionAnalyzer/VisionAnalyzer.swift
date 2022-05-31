@@ -48,29 +48,28 @@ public struct VisionAnalyzer {
         return angle
     }
     
-   
     /// 骨格を検出する
     /// - Parameters:
     ///   - cgImage: 分析対象の画像
-    /// - Returns: 分析した各ポイント
-    public func analyze(cgImage:CGImage) -> [BodyJoint]{
+    ///   - callback: 分析した各ポイント
+    public func analyze(cgImage:CGImage,callback: @escaping ([BodyJoint]) -> Void){
         analyzer.performRequests(cgImage: cgImage)
-        return  analyzer.points
+        callback(analyzer.points)
     }
+    
     
     /// 骨格を検出する
     /// - Parameters:
     ///   - cgImage: 分析対象の画像
-    /// - Returns: 分析結果の画像
-    public func analyzedImage(cgImage:CGImage) -> CGImage?{
-        
-        let points:[BodyJoint] = self.analyze(cgImage: cgImage)
-        
-        guard let img = drawer.drawBody(image: UIImage(cgImage: cgImage), joints: points) else{
-            return nil
-        }
-        
-        return img.cgImage
+    ///   - callback: 分析結果の画像
+    public func analyzedImage(cgImage:CGImage,callback: @escaping (CGImage?) -> Void){
+        self.analyze(cgImage: cgImage, callback: { points in
+            let points:[BodyJoint] = points
+            guard let img = drawer.drawBody(image: UIImage(cgImage: cgImage), joints: points) else{
+                return callback(nil)
+            }
+            callback(img.cgImage)
+        })
     }
     
 }
