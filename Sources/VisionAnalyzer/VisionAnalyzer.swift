@@ -76,7 +76,7 @@ public struct VisionAnalyzer {
     /// 動画を画像に分割する
     /// - Parameter fileUrl: ビデオファイルのURL
     /// - Returns: 画像リスト
-    static func movieSplit(fileUrl:URL) -> [CGImage]{
+    public func movieSplit(fileUrl:URL) -> [CGImage]{
         let fileService:FileService = FileService()
         let imageArray:[CGImage] = fileService.convertVideoToImageArray(fileUrl: fileUrl)
         return imageArray
